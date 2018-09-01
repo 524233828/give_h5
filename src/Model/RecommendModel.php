@@ -18,7 +18,7 @@ class RecommendModel extends BaseModel
     {
         return database()->select(self::$table,
             [
-                CateModel::$table => ["id" => "cate_id"]
+                "[>]".CateModel::$table => ["id" => "cate_id"]
             ],
             $columns, $where
         );
