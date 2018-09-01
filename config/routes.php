@@ -11,6 +11,11 @@ route()->group(['prefix' => '/pay', 'middleware' => 'dispatch'], function(){
     route()->get("/banner", 'PayController@banner');
 });
 
+//分类列表页
+route()->group(['prefix' => '/cate', 'middleware' => 'dispatch'], function(){
+    route()->get("/list", 'CateController@cateList');
+});
+
 route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
 
     //上传图片
