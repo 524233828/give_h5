@@ -26,7 +26,7 @@ class PayLogic extends BaseLogic
     {
         $list =  BannerModel::fetch(
             [
-                "img_url",
+                "image_url",
                 "page_id",
                 "url",
                 "params",
