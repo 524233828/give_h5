@@ -6,6 +6,10 @@ route()->get('/hello/foo', 'WelcomeController@sayHello');
 
 route()->post('/test/rsa', 'RSAController@test')->withAddMiddleware(['rsa','verify','reply']);
 
+//付费页
+route()->group(['prefix' => '/pay', 'middleware' => 'dispatch'], function(){
+    route()->get("/banner", 'PayController@banner');
+});
 
 route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
 
