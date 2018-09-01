@@ -19,7 +19,7 @@ class BannerController extends AdminBaseController
         $this->logic = BannerLogic::getInstance();
 
         $this->add_valid = [
-            "img_url" => "url",
+            "image_url" => "url",
             "status" => "integer",
             "url" => "url",
             "sort" => "integer",
