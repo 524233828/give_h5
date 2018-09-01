@@ -47,6 +47,13 @@ route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
     route()->post("/banner/update","Admin\BannerController@updateAction");
     route()->post("/banner/delete","Admin\BannerController@deleteAction");
 
+    //分类
+    route()->get("/cate","Admin\CateController@listAction");
+    route()->get("/cate/get","Admin\CateController@getAction");
+    route()->post("/cate","Admin\CateController@addAction");
+    route()->post("/cate/update","Admin\CateController@updateAction");
+    route()->post("/cate/delete","Admin\CateController@deleteAction");
+
     //分析师
     route()->get("/analyst","Admin\AnalystController@listAction");
     route()->post("/analyst/update","Admin\AnalystController@updateAction");
