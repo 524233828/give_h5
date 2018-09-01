@@ -21,25 +21,6 @@ route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
     //上传图片
     route()->post("/upload_image","Admin\CommController@uploadImage");
 
-    //上传图片
-    route()->post("/upload_video","Admin\CommController@uploadVideo");
-
-    //页面列表
-    route()->get("/page","Admin\AdventureController@fetchPage");
-
-    //广告
-    route()->get("/adventure","Admin\AdventureController@listAction");
-    route()->get("/adventure/get","Admin\AdventureController@getAction");
-    route()->post("/adventure","Admin\AdventureController@addAction");
-    route()->post("/adventure/update","Admin\AdventureController@updateAction");
-    route()->post("/adventure/delete","Admin\AdventureController@deleteAction");
-
-    //分析师申请
-    route()->get("/application","Admin\AnalystApplicationController@listAction");
-    route()->get("/application/get","Admin\AnalystApplicationController@getAction");
-    route()->post("/application/pass","Admin\AnalystApplicationController@passAction");
-    route()->post("/application/refuse","Admin\AnalystApplicationController@deleteAction");
-
     //首页banner
     route()->get("/banner","Admin\BannerController@listAction");
     route()->get("/banner/get","Admin\BannerController@getAction");
@@ -53,6 +34,13 @@ route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
     route()->post("/cate","Admin\CateController@addAction");
     route()->post("/cate/update","Admin\CateController@updateAction");
     route()->post("/cate/delete","Admin\CateController@deleteAction");
+
+    //分类
+    route()->get("/recommend","Admin\RecommendController@listAction");
+    route()->get("/recommend/get","Admin\RecommendController@getAction");
+    route()->post("/recommend","Admin\RecommendController@addAction");
+    route()->post("/recommend/update","Admin\RecommendController@updateAction");
+    route()->post("/recommend/delete","Admin\RecommendController@deleteAction");
 
     //分析师
     route()->get("/analyst","Admin\AnalystController@listAction");
