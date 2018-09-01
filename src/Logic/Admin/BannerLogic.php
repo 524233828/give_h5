@@ -20,7 +20,7 @@ class BannerLogic extends AdminBaseLogic
     protected $list_filter = [
         "status",
         "url",
-        "img_url",
+        "image_url",
         "sort"
     ];
 
