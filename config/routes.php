@@ -70,73 +70,14 @@ route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
     route()->post("/recommend/update","Admin\RecommendController@updateAction");
     route()->post("/recommend/delete","Admin\RecommendController@deleteAction");
 
-    //分析师
-    route()->get("/analyst","Admin\AnalystController@listAction");
-    route()->post("/analyst/update","Admin\AnalystController@updateAction");
-    route()->post("/analyst","Admin\AnalystController@addAction");
-
-    //比赛
-    route()->get("/match","Admin\MatchController@listAction");
-    route()->post("/match/recommend","Admin\MatchController@matchRecommend");
-
     //订单
     route()->get("/order", "Admin\OrderController@listAction");
-
-    //系统通知
-    route()->get("/notice","Admin\SystemNoticeController@listAction");
-    route()->get("/notice/get","Admin\SystemNoticeController@getAction");
-    route()->post("/notice","Admin\SystemNoticeController@addAction");
-    route()->post("/notice/update","Admin\SystemNoticeController@updateAction");
-    route()->post("/notice/delete","Admin\SystemNoticeController@deleteAction");
-
-    //球稳头条
-    route()->get("/top_line","Admin\TopLineController@listAction");
-    route()->get("/top_line/get","Admin\TopLineController@getAction");
-    route()->post("/top_line","Admin\TopLineController@addAction");
-    route()->post("/top_line/update","Admin\TopLineController@updateAction");
-    route()->post("/top_line/delete","Admin\TopLineController@deleteAction");
 
     //用户列表
     route()->get("/user","Admin\UserController@listAction");
 
-    //视频
-    route()->get("/video","Admin\VideoController@listAction");
-    route()->get("/video/get","Admin\VideoController@getAction");
-    route()->post("/video","Admin\VideoController@addAction");
-    route()->post("/video/update","Admin\VideoController@updateAction");
-    route()->post("/video/delete","Admin\VideoController@deleteAction");
-
-    //视频分类
-    route()->get("/video_cate","Admin\VideoCateController@listAction");
-    route()->get("/video_cate/get","Admin\VideoCateController@getAction");
-    route()->post("/video_cate","Admin\VideoCateController@addAction");
-    route()->post("/video_cate/update","Admin\VideoCateController@updateAction");
-    route()->post("/video_cate/delete","Admin\VideoCateController@deleteAction");
-
-    //视频分类下的视频
-    route()->get("/video_cate/video","Admin\VideoCateController@listVideoByCate");
-    route()->post("/video_cate/video","Admin\VideoCateController@addVideoByCate");
-    route()->post("/video_cate/video/delete","Admin\VideoCateController@deleteVideoByCate");
-
-    //用户等级商品
-    route()->get("/user_level","Admin\UserLevelController@listAction");
-    route()->post("/user_level/update","Admin\UserLevelController@updateAction");
-
-    //分析师等级等级商品
-    route()->get("/analyst_level","Admin\AnalystLevelController@listAction");
-    route()->post("/analyst_level/update","Admin\AnalystLevelController@updateAction");
-
-    //发推荐
-    route()->get("/recommend/odd","Admin\RecommendController@matchInfo");
-    route()->post("/recommend/add","Admin\RecommendController@addRecommend");
-    route()->get("/recommend/list","Admin\RecommendController@RecommendList");
-
     //收入统计
     route()->get("/income_static","Admin\IncomeStaticController@incomeStatic");
-
-    //等级配置
-    route()->get("/level","Admin\IconController@listAction");
-    route()->post("/level/update","Admin\IconController@updateAction");
 
 });
 
