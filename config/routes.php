@@ -41,7 +41,7 @@ route()->group(['prefix' => '/common', 'middleware' => 'dispatch'], function(){
 
 //用户信息页
 route()->group(['prefix' => '/user', 'middleware' => 'dispatch'], function(){
-    route()->post("/info", 'UserController@getUserInfo')->withAddMiddleware("login");
+    route()->get("/info", 'UserController@getUserInfo')->withAddMiddleware("login");
 });
 
 route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
