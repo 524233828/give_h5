@@ -26,7 +26,7 @@ class CateLogic extends BaseLogic
         $where['LIMIT'] = [$page->getFirstIndex(), $size];
 
         $list = CateModel::fetch(
-            ["image_url", "week_amount", "month_amount","name"],
+            ["id","image_url", "week_amount", "month_amount","name"],
             $where
         );
 
