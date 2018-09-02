@@ -44,40 +44,43 @@ route()->group(['prefix' => '/user', 'middleware' => 'dispatch'], function(){
     route()->get("/info", 'UserController@getUserInfo')->withAddMiddleware("login");
 });
 
-route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
+//登录后台
+route()->post('/admin/login', 'Admin\LoginController@login');
+
+route()->group(['prefix' => '/admin', 'middleware' => 'admin_dispatch'],function(){
 
     //上传图片
-    route()->post("/upload_image","Admin\CommController@uploadImage");
+    route()->post("/upload_image","Admin\CommController@uploadImage")->withAddMiddleware("login");
 
     //首页banner
-    route()->get("/banner","Admin\BannerController@listAction");
-    route()->get("/banner/get","Admin\BannerController@getAction");
-    route()->post("/banner","Admin\BannerController@addAction");
-    route()->post("/banner/update","Admin\BannerController@updateAction");
-    route()->post("/banner/delete","Admin\BannerController@deleteAction");
+    route()->get("/banner","Admin\BannerController@listAction")->withAddMiddleware("login");
+    route()->get("/banner/get","Admin\BannerController@getAction")->withAddMiddleware("login");
+    route()->post("/banner","Admin\BannerController@addAction")->withAddMiddleware("login");
+    route()->post("/banner/update","Admin\BannerController@updateAction")->withAddMiddleware("login");
+    route()->post("/banner/delete","Admin\BannerController@deleteAction")->withAddMiddleware("login");
 
     //分类
-    route()->get("/cate","Admin\CateController@listAction");
-    route()->get("/cate/get","Admin\CateController@getAction");
-    route()->post("/cate","Admin\CateController@addAction");
-    route()->post("/cate/update","Admin\CateController@updateAction");
-    route()->post("/cate/delete","Admin\CateController@deleteAction");
+    route()->get("/cate","Admin\CateController@listAction")->withAddMiddleware("login");
+    route()->get("/cate/get","Admin\CateController@getAction")->withAddMiddleware("login");
+    route()->post("/cate","Admin\CateController@addAction")->withAddMiddleware("login");
+    route()->post("/cate/update","Admin\CateController@updateAction")->withAddMiddleware("login");
+    route()->post("/cate/delete","Admin\CateController@deleteAction")->withAddMiddleware("login");
 
     //分类
-    route()->get("/recommend","Admin\RecommendController@listAction");
-    route()->get("/recommend/get","Admin\RecommendController@getAction");
-    route()->post("/recommend","Admin\RecommendController@addAction");
-    route()->post("/recommend/update","Admin\RecommendController@updateAction");
-    route()->post("/recommend/delete","Admin\RecommendController@deleteAction");
+    route()->get("/recommend","Admin\RecommendController@listAction")->withAddMiddleware("login");
+    route()->get("/recommend/get","Admin\RecommendController@getAction")->withAddMiddleware("login");
+    route()->post("/recommend","Admin\RecommendController@addAction")->withAddMiddleware("login");
+    route()->post("/recommend/update","Admin\RecommendController@updateAction")->withAddMiddleware("login");
+    route()->post("/recommend/delete","Admin\RecommendController@deleteAction")->withAddMiddleware("login");
 
     //订单
-    route()->get("/order", "Admin\OrderController@listAction");
+    route()->get("/order", "Admin\OrderController@listAction")->withAddMiddleware("login");
 
     //用户列表
-    route()->get("/user","Admin\UserController@listAction");
+    route()->get("/user","Admin\UserController@listAction")->withAddMiddleware("login");
 
     //收入统计
-    route()->get("/income_static","Admin\IncomeStaticController@incomeStatic");
+    route()->get("/income_static","Admin\IncomeStaticController@incomeStatic")->withAddMiddleware("login");
 
 });
 
