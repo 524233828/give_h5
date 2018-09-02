@@ -32,6 +32,9 @@ class ErrorCode
     const DEMO_NOT_FOUND = 1000;
 
     const CATE_NOT_FOUND = 1100;
+    const SEND_SMS_FAIL = 1101;
+    const INVALID_CODE = 1102;
+    const LOGIN_FAIL = 1103;
 
     /**
      * 错误代码与消息的对应数组
@@ -48,6 +51,9 @@ class ErrorCode
 
         self::DEMO_NOT_FOUND        => ['模板不存在', Response::HTTP_NOT_FOUND],
         self::CATE_NOT_FOUND        => ['分类不存在', Response::HTTP_NOT_FOUND],
+        self::SEND_SMS_FAIL         => ['发送验证码失败', Response::HTTP_NOT_FOUND],
+        self::INVALID_CODE          => ['验证码错误', Response::HTTP_NOT_FOUND],
+        self::LOGIN_FAIL            => ['登录失败', Response::HTTP_NOT_FOUND],
     ];
 
     /**

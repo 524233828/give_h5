@@ -22,6 +22,12 @@ route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(
     route()->get("/list", 'RecommendController@fetchRecommendByCate');
 });
 
+//登录页
+route()->group(['prefix' => '/login', 'middleware' => 'dispatch'], function(){
+    route()->post("/send_code", 'LoginController@sendCode');
+    route()->post("/check_code", 'LoginController@login');
+});
+
 route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
 
     //上传图片
