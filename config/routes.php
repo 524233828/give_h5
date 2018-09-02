@@ -30,6 +30,10 @@ route()->group(['prefix' => '/login', 'middleware' => 'dispatch'], function(){
     route()->post("/check_code", 'LoginController@login');
 });
 
+route()->group(['prefix' => '/common', 'middleware' => 'dispatch'], function(){
+    route()->post("/notify", 'CommonController@orderNotify');
+});
+
 route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
 
     //上传图片
