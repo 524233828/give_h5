@@ -8,9 +8,7 @@
 
 namespace Logic;
 
-use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
-use Intervention\Image\Size;
 use Service\UploadService;
 
 class UploadLogic extends BaseLogic

@@ -39,6 +39,9 @@ class ErrorCode
     const INVALID_CODE = 1102;
     const LOGIN_FAIL = 1103;
     const USER_CATE_EXISTS = 1104;
+    const CATE_NOT_BUY = 1105;
+    const RECOMMEND_NOT_FOUND = 1106;
+    const USER_NOT_FOUND = 1107;
 
     const CREATE_ORDER_FAIL = 1300;
 
@@ -66,6 +69,9 @@ class ErrorCode
 
         self::CREATE_ORDER_FAIL     => ['创建订单失败', Response::HTTP_INTERNAL_SERVER_ERROR],
         self::USER_NOT_LOGIN        => ['未登录', Response::HTTP_INTERNAL_SERVER_ERROR],
+        self::CATE_NOT_BUY          => ['服务未购买', Response::HTTP_INTERNAL_SERVER_ERROR],
+        self::RECOMMEND_NOT_FOUND   => ['推荐不存在', Response::HTTP_INTERNAL_SERVER_ERROR],
+        self::USER_NOT_FOUND        => ['用户不存在', Response::HTTP_INTERNAL_SERVER_ERROR],
     ];
 
     /**

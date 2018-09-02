@@ -22,6 +22,7 @@ route()->group(['prefix' => '/cate', 'middleware' => 'dispatch'], function(){
 route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(){
     route()->get("/image", 'RecommendController@cateImage');
     route()->get("/list", 'RecommendController@fetchRecommendByCate');
+    route()->get("/info", 'RecommendController@recommendInfo');
 });
 
 //登录页
@@ -36,6 +37,11 @@ route()->group(['prefix' => '/order', 'middleware' => 'dispatch'], function(){
 
 route()->group(['prefix' => '/common', 'middleware' => 'dispatch'], function(){
     route()->post("/notify", 'CommonController@orderNotify');
+});
+
+//用户信息页
+route()->group(['prefix' => '/user', 'middleware' => 'dispatch'], function(){
+    route()->post("/info", 'UserController@getUserInfo')->withAddMiddleware("login");
 });
 
 route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){

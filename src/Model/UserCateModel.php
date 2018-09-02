@@ -33,6 +33,10 @@ class UserCateModel extends BaseModel
             ["user_id"=>$user_id, "cate_id"=>$cate_id, "status" => 1 ]
         );
 
+        if(empty($end_time)){
+            return true;
+        }
+
         return $end_time < time();
     }
 

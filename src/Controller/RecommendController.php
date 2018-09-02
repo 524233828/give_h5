@@ -29,4 +29,13 @@ class RecommendController extends BaseController
         $size = $request->getParam("size", 20);
         return $this->response(RecommendLogic::getInstance()->fetchRecommendByCate($cate_id, $page, $size));
     }
+
+    public function recommendInfo(ServerRequest $request)
+    {
+        validator($request, ["recommend_id" => "required|integer"]);
+
+        $recommend_id = $request->getParam("recommend_id");
+
+        return $this->response(RecommendLogic::getInstance()->recommendInfo($recommend_id));
+    }
 }
