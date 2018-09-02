@@ -37,6 +37,9 @@ class ErrorCode
     const SEND_SMS_FAIL = 1101;
     const INVALID_CODE = 1102;
     const LOGIN_FAIL = 1103;
+    const USER_CATE_EXISTS = 1104;
+
+    const CREATE_ORDER_FAIL = 1300;
 
     /**
      * 错误代码与消息的对应数组
@@ -58,6 +61,9 @@ class ErrorCode
         self::SEND_SMS_FAIL         => ['发送验证码失败', Response::HTTP_NOT_FOUND],
         self::INVALID_CODE          => ['验证码错误', Response::HTTP_NOT_FOUND],
         self::LOGIN_FAIL            => ['登录失败', Response::HTTP_NOT_FOUND],
+        self::USER_CATE_EXISTS      => ['已购买该服务', Response::HTTP_NOT_FOUND],
+
+        self::CREATE_ORDER_FAIL     => ['创建订单失败', Response::HTTP_INTERNAL_SERVER_ERROR],
     ];
 
     /**

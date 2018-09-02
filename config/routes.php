@@ -9,6 +9,8 @@ route()->post('/test/rsa', 'RSAController@test')->withAddMiddleware(['rsa','veri
 //付费页
 route()->group(['prefix' => '/pay', 'middleware' => 'dispatch'], function(){
     route()->get("/banner", 'PayController@banner');
+    route()->get("/price", 'BuyController@catePrice');
+    route()->post("/cate", 'BuyController@userCate');
 });
 
 //分类列表页

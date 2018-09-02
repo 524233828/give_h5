@@ -53,3 +53,11 @@ function error($code)
 {
     throw new Exception(\Constant\ErrorCode::msg($code),$code);
 }
+
+/**
+ * @return \EasyWeChat\Foundation\Application;
+ */
+function wechat()
+{
+    return app()->get("wechat");
+}
