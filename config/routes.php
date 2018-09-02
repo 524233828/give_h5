@@ -10,7 +10,7 @@ route()->post('/test/rsa', 'RSAController@test')->withAddMiddleware(['rsa','veri
 route()->group(['prefix' => '/pay', 'middleware' => 'dispatch'], function(){
     route()->get("/banner", 'PayController@banner');
     route()->get("/price", 'BuyController@catePrice');
-    route()->post("/cate", 'BuyController@userCate');
+    route()->post("/cate", 'BuyController@userCate')->withAddMiddleware("login");
 });
 
 //分类列表页
@@ -28,6 +28,10 @@ route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(
 route()->group(['prefix' => '/login', 'middleware' => 'dispatch'], function(){
     route()->post("/send_code", 'LoginController@sendCode');
     route()->post("/check_code", 'LoginController@login');
+});
+
+route()->group(['prefix' => '/order', 'middleware' => 'dispatch'], function(){
+    route()->post("/list", 'BuyController@fetchOrderList')->withAddMiddleware("login");
 });
 
 route()->group(['prefix' => '/common', 'middleware' => 'dispatch'], function(){

@@ -3,6 +3,7 @@ namespace Middleware;
 
 use Constant\ErrorCode;
 use Exception\BaseException;
+use FastD\Http\Response;
 use FastD\Middleware\DelegateInterface;
 use FastD\Middleware\Middleware;
 use Psr\Http\Message\ServerRequestInterface;
@@ -21,7 +22,7 @@ class Dispatch extends Middleware
                     $e->getMessage(),
                     $e->getCode(),
                     null,
-                    ErrorCode::status($e->getCode())
+                    Response::HTTP_OK
                 );
             } else {
                 BaseException::SystemError();

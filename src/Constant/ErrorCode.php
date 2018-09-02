@@ -32,6 +32,7 @@ class ErrorCode
 
     // 10xx 模板系统错误
     const DEMO_NOT_FOUND = 1000;
+    const USER_NOT_LOGIN = 1001; // 未登录
 
     const CATE_NOT_FOUND = 1100;
     const SEND_SMS_FAIL = 1101;
@@ -64,6 +65,7 @@ class ErrorCode
         self::USER_CATE_EXISTS      => ['已购买该服务', Response::HTTP_NOT_FOUND],
 
         self::CREATE_ORDER_FAIL     => ['创建订单失败', Response::HTTP_INTERNAL_SERVER_ERROR],
+        self::USER_NOT_LOGIN        => ['未登录', Response::HTTP_INTERNAL_SERVER_ERROR],
     ];
 
     /**
