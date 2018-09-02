@@ -33,7 +33,9 @@ class ValidCodeService
         $uri->withPath("/valid_code/send");
 
         $data = [
-            "phone" => $phone
+            'form_params' => [
+                'phone' => $phone,
+            ]
         ];
 
         $response = $this->http->request("POST", (string)$uri, $data);
@@ -47,9 +49,12 @@ class ValidCodeService
 
         $uri->withPath("/valid_code/check");
 
+
         $data = [
-            "phone" => $phone,
-            "code" => $code
+            'form_params' => [
+                "phone" => $phone,
+                "code" => $code
+            ]
         ];
 
         $response = $this->http->request("POST", (string)$uri, $data);
