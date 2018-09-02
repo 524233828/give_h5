@@ -143,6 +143,19 @@ class BuyLogic extends BaseLogic
             error(ErrorCode::CATE_NOT_FOUND);
         }
 
+        $user = UserLogic::$user;
+
+        if(empty($user))
+        {
+            $cate['is_buy'] = 0;
+        }else{
+            if(UserCateModel::isExpired($user['id'], $cate_id)){
+                $cate['is_buy'] = 0;
+            }else{
+                $cate['is_buy'] = 1;
+            }
+        }
+
         return $cate;
     }
 }
