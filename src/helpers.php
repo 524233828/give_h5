@@ -48,3 +48,8 @@ function myLog($filename = "debug", $level = \Monolog\Logger::DEBUG)
     }
     return $log;
 }
+
+function error($code)
+{
+    throw new Exception(\Constant\ErrorCode::msg($code),$code);
+}

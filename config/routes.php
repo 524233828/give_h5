@@ -16,6 +16,12 @@ route()->group(['prefix' => '/cate', 'middleware' => 'dispatch'], function(){
     route()->get("/list", 'CateController@cateList');
 });
 
+//推荐列表页
+route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(){
+    route()->get("/image", 'RecommendController@cateImage');
+    route()->get("/list", 'RecommendController@fetchRecommendByCate');
+});
+
 route()->group(['prefix' => '/admin', 'middleware' => 'dispatch'],function(){
 
     //上传图片

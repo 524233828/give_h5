@@ -31,6 +31,8 @@ class ErrorCode
     // 10xx 模板系统错误
     const DEMO_NOT_FOUND = 1000;
 
+    const CATE_NOT_FOUND = 1100;
+
     /**
      * 错误代码与消息的对应数组
      *
@@ -45,6 +47,7 @@ class ErrorCode
         self::ERR_OVERTIME          => ['请求超时', Response::HTTP_BAD_REQUEST],
 
         self::DEMO_NOT_FOUND        => ['模板不存在', Response::HTTP_NOT_FOUND],
+        self::CATE_NOT_FOUND        => ['分类不存在', Response::HTTP_NOT_FOUND],
     ];
 
     /**
