@@ -67,7 +67,7 @@ class BuyLogic extends BaseLogic
             "info" => $info,
             "total_fee" => $amount,
             "create_time" => time(),
-            "product_id" => Goods::USER_LEVEL,
+            "product_id" => Goods::USER_CATE,
             "user_id" => UserLogic::$user['id'],
             "pay_type" => $pay_type
         ];
