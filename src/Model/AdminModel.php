@@ -11,5 +11,5 @@ namespace Model;
 
 class AdminModel extends BaseModel
 {
-    public static $table = "admin";
+    public static $table = "give_admin";
 }
