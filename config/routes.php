@@ -11,6 +11,7 @@ route()->group(['prefix' => '/pay', 'middleware' => 'dispatch'], function(){
     route()->get("/banner", 'PayController@banner');
     route()->get("/price", 'BuyController@catePrice');
     route()->post("/cate", 'BuyController@userCate')->withAddMiddleware("login");
+    route()->get("/cate", 'BuyController@userCate')->withAddMiddleware("login");
 });
 
 //分类列表页
