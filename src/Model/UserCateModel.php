@@ -40,4 +40,11 @@ class UserCateModel extends BaseModel
         return $end_time < time();
     }
 
+    public static function fetchUserCateWithCate($columns = "*", $where = null)
+    {
+        return database()->select(self::$table, [
+            "[>]".CateModel::$table => ["id" => "cate_id"]
+        ], $columns, $where);
+    }
+
 }

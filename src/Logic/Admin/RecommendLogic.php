@@ -23,7 +23,8 @@ class RecommendLogic extends AdminBaseLogic
         "content",
         "status",
         "sort",
-        "cate_id"
+        "cate_id",
+        "end_time"
     ];
 
     public function listAction($params)
@@ -60,6 +61,7 @@ class RecommendLogic extends AdminBaseLogic
             RecommendModel::$table.".status",
             RecommendModel::$table.".sort",
             RecommendModel::$table.".cate_id",
+            RecommendModel::$table.".end_time",
             CateModel::$table.".name"
         ],$where);
 

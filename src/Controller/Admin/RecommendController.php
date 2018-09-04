@@ -24,6 +24,7 @@ class RecommendController extends AdminBaseController
             "sort" => "integer",
             "status" => "integer",
             "cate_id" => "integer",
+            "end_time" => "integer",
         ];
     }
 }

@@ -42,6 +42,7 @@ class ErrorCode
     const CATE_NOT_BUY = 1105;
     const RECOMMEND_NOT_FOUND = 1106;
     const USER_NOT_FOUND = 1107;
+    const RECOMMEND_EXPIRE = 1108;
 
     const CREATE_ORDER_FAIL = 1300;
 
@@ -72,6 +73,7 @@ class ErrorCode
         self::CATE_NOT_BUY          => ['服务未购买', Response::HTTP_OK],
         self::RECOMMEND_NOT_FOUND   => ['推荐不存在', Response::HTTP_OK],
         self::USER_NOT_FOUND        => ['用户不存在', Response::HTTP_OK],
+        self::RECOMMEND_EXPIRE      => ['推荐已过期', Response::HTTP_OK],
     ];
 
     /**

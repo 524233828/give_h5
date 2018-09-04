@@ -9,6 +9,8 @@
 namespace Logic\Admin;
 
 
+use Model\CateModel;
+use Model\UserCateModel;
 use Model\UserLevelOrderModel;
 use Model\UserModel;
 use Service\Pager;
@@ -54,13 +56,31 @@ class UserLogic extends AdminBaseLogic
         ],$where);
 
         $ids = [];
-        $user_list = [];
+        $user_index_list = [];
         foreach ($list as $v)
         {
-            $user_list[$v['id']] = $v;
-            $user_list[$v['id']]['level'] = 0;
             $ids[] = $v['id'];
+            $user_index_list[$v['id']] = $v;
         }
+
+        $cate = UserCateModel::fetchUserCateWithCate(
+            [
+                CateModel::$table.".id",
+                UserCateModel::$table.".user_id",
+                CateModel::$table.".name",
+            ],
+            [
+                UserCateModel::$table.".user_id" => $ids
+            ]
+        );
+
+        foreach ($cate as $key => $value){
+            if(isset($user_index_list[$value['user_id']])){
+                $user_index_list[$value['user_id']]['cate'][] = $value['name'];
+            }
+        }
+
+        $list = array_values($user_index_list);
 
         return ["list"=>$list, "meta" => $pager->getPager($count)];
     }
