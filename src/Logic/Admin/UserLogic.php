@@ -61,6 +61,7 @@ class UserLogic extends AdminBaseLogic
         {
             $ids[] = $v['id'];
             $user_index_list[$v['id']] = $v;
+            $user_index_list[$v['id']]['cate'] = [];
         }
 
         $cate = UserCateModel::fetchUserCateWithCate(
