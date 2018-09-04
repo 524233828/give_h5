@@ -50,6 +50,7 @@ class RecommendLogic extends AdminBaseLogic
 
         //分页
         $where["LIMIT"] = [$pager->getFirstIndex(), $size];
+        $where["ORDER"] = ["id" => "DESC"];
 
         $list = RecommendModel::fetchRecommendWithCate([
             RecommendModel::$table.".id",
