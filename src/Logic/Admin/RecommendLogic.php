@@ -65,6 +65,11 @@ class RecommendLogic extends AdminBaseLogic
             CateModel::$table.".name"
         ],$where);
 
+        foreach($list as $k=>$v){
+            $list[$k]['end_time'] = date("Y-m-d H:i:s", $v['end_time']);
+            $list[$k]['create_time'] = date("Y-m-d H:i:s", $v['create_time']);
+        }
+
         return ["list"=>$list, "meta" => $pager->getPager($count)];
     }
 
