@@ -24,6 +24,7 @@ class CateLogic extends BaseLogic
         $count = CateModel::count($where);
 
         $where['LIMIT'] = [$page->getFirstIndex(), $size];
+        $where['ORDER'] = ["sort" => "DESC"];
 
         $list = CateModel::fetch(
             ["id","image_url", "week_amount", "month_amount","name"],
