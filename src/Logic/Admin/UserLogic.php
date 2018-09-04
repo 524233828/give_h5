@@ -70,7 +70,9 @@ class UserLogic extends AdminBaseLogic
                 CateModel::$table.".name",
             ],
             [
-                UserCateModel::$table.".user_id" => $ids
+                UserCateModel::$table.".user_id" => $ids,
+                UserCateModel::$table.".status" => 1,
+                UserCateModel::$table.".end_time[>]" => time()
             ]
         );
 
