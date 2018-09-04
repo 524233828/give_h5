@@ -43,7 +43,7 @@ class UserCateModel extends BaseModel
     public static function fetchUserCateWithCate($columns = "*", $where = null)
     {
         return database()->select(self::$table, [
-            "[>]".CateModel::$table => ["id" => "cate_id"]
+            "[>]".CateModel::$table => ["cate_id" => "id"]
         ], $columns, $where);
     }
 
