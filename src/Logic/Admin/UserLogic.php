@@ -68,6 +68,7 @@ class UserLogic extends AdminBaseLogic
             [
                 CateModel::$table.".id",
                 UserCateModel::$table.".user_id",
+                UserCateModel::$table.".end_time",
                 CateModel::$table.".name",
             ],
             [
@@ -79,7 +80,10 @@ class UserLogic extends AdminBaseLogic
 
         foreach ($cate as $key => $value){
             if(isset($user_index_list[$value['user_id']])){
-                $user_index_list[$value['user_id']]['cate'][] = $value['name'];
+                $user_index_list[$value['user_id']]['cate'][] = [
+                    'name' => $value['name'],
+                    'end_time' => date("Y-m-d H:i:s", $value['end_time']),
+                ];
             }
         }
 
