@@ -21,7 +21,8 @@ class CateLogic extends AdminBaseLogic
         "name",
         "image_url",
         "month_amount",
-        "week_amount"
+        "week_amount",
+        "sort"
     ];
 
     public function listAction($params)
@@ -57,6 +58,7 @@ class CateLogic extends AdminBaseLogic
             "status",
             "week_amount",
             "month_amount",
+            "sort",
         ],$where);
 
         return ["list"=>$list, "meta" => $pager->getPager($count)];

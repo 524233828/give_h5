@@ -23,6 +23,7 @@ class CateController extends AdminBaseController
             "name" => "required",
             "week_amount" => "float",
             "month_amount" => "float",
+            "sort" => "integer",
         ];
     }
 }
