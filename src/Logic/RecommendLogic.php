@@ -34,7 +34,7 @@ class RecommendLogic extends BaseLogic
     {
         $pager = new Pager($page, $size);
 
-        $where = ['cate_id' => $cate_id, "status" => 1, "end_time" > time()];
+        $where = ['cate_id' => $cate_id, "status" => 1, "end_time[>]" => time()];
 
         //计算符合筛选参数的行数
         $count = RecommendModel::count($where);
