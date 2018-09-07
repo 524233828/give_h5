@@ -60,6 +60,7 @@ class BuyLogic extends BaseLogic
                 "amount" => $amount,
                 "subject" => $info,
                 'currency' => 'CNY',
+                'description' => $info,
                 'return_url' => 'http://give_h5.ym8800.com',
             ];
         }
