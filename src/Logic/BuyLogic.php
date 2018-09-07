@@ -14,6 +14,7 @@ use Model\CateModel;
 use Model\OrderModel;
 use Model\UserCateModel;
 use Pay\Pay;
+use Runner\NezhaCashier\Cashier;
 use Service\Goods\Goods;
 use Service\Pager;
 
@@ -55,8 +56,8 @@ class BuyLogic extends BaseLogic
             ];
         }else{
             $order = [
-                "out_trade_no" => $order_id,
-                "total_amount" => $amount,
+                "order_id" => $order_id,
+                "amount" => $amount,
                 "subject" => $info,
             ];
         }
@@ -106,9 +107,9 @@ class BuyLogic extends BaseLogic
     private function pay($pay_type = "wechat", $order)
     {
         $config = config()->get("payment");
-        $pay = new Pay($config);
+        $pay = new Cashier("alipay_web",$config["alipay_web"]);
 
-        return $pay->driver($pay_type)->gateway("web")->apply($order);
+        return $pay->charge($order);
     }
 
     public function fetchOrderList($page = 1, $size = 20)
