@@ -109,7 +109,7 @@ class BuyLogic extends BaseLogic
         $config = config()->get("payment");
         $pay = new Cashier("alipay_web",$config["alipay_web"]);
 
-        return $pay->charge($order);
+        return $pay->charge($order)->get("charge_url");
     }
 
     public function fetchOrderList($page = 1, $size = 20)
