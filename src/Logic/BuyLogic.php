@@ -108,7 +108,7 @@ class BuyLogic extends BaseLogic
         $config = config()->get("payment");
         $pay = new Pay($config);
 
-        return $pay->driver($pay_type)->gateway("wap")->apply($order);
+        return $pay->driver($pay_type)->gateway("web")->apply($order);
     }
 
     public function fetchOrderList($page = 1, $size = 20)
