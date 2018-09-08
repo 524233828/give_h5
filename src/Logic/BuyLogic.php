@@ -10,6 +10,7 @@ namespace Logic;
 
 
 use Constant\ErrorCode;
+use function EasyWeChat\Payment\get_client_ip;
 use Model\CateModel;
 use Model\OrderModel;
 use Model\UserCateModel;
@@ -46,23 +47,18 @@ class BuyLogic extends BaseLogic
 
         $order_id = OrderModel::getOrderId();
 
-        if($pay_type == "wechat")
+        $order = [
+            "order_id" => $order_id,
+            "amount" => $amount,
+            "subject" => $info,
+            'currency' => 'CNY',
+            'description' => $info,
+            'return_url' => 'http://give_h5.ym8800.com',
+        ];
+
+        if($pay_type == "wechat_h5")
         {
-            $order = [
-                "out_trade_no" => $order_id,
-                "total_fee" => $amount * 100,
-                "spbill_create_ip" => "",
-                "body" => $info,
-            ];
-        }else{
-            $order = [
-                "order_id" => $order_id,
-                "amount" => $amount,
-                "subject" => $info,
-                'currency' => 'CNY',
-                'description' => $info,
-                'return_url' => 'http://give_h5.ym8800.com',
-            ];
+            $order['user_ip'] = get_client_ip();
         }
 
         database()->pdo->beginTransaction();
@@ -110,7 +106,7 @@ class BuyLogic extends BaseLogic
     private function pay($pay_type = "wechat", $order)
     {
         $config = config()->get("payment");
-        $pay = new Cashier("alipay_web",$config["alipay_web"]);
+        $pay = new Cashier($pay_type, $config[$pay_type]);
 
         return $pay->charge($order)->get("charge_url");
     }

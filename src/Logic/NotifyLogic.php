@@ -27,7 +27,7 @@ class NotifyLogic extends BaseLogic
         call_user_func([$this,$order['pay_type']], $request, $order);
     }
 
-    public function alipay(ServerRequest $request, $order)
+    public function alipay_web(ServerRequest $request, $order)
     {
         $log = myLog("NotifyLogic_alipay");
 
@@ -55,7 +55,7 @@ class NotifyLogic extends BaseLogic
 
     }
 
-    public function wechat(ServerRequest $request, $order)
+    public function wechat_h5(ServerRequest $request, $order)
     {
         //TODO: 验签
 

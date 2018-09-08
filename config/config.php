@@ -38,7 +38,10 @@ return [
         ],
 
         "wechat_h5" => [
-            "notify_url"
+            'app_id'     => 'wx45d4e558ae0284a4', // 应用ID
+            'mch_id'     => '1493544892', // 微信支付商户号
+            'mch_secret' => 'yaoyuan123*', // 微信支付密钥
+            "notify_url" => 'http://give_h5.ym8800.com/api/common/notify'
         ]
     ],
 ];
