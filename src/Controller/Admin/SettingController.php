@@ -19,7 +19,7 @@ class SettingController extends AdminBaseController
         $this->logic = SettingLogic::getInstance();
 
         $this->add_valid = [
-            "name" => "required",
+            "name" => "null",
             "value" => "required",
             "desc" => "null",
         ];
