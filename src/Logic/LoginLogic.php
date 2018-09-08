@@ -11,7 +11,9 @@ namespace Logic;
 
 use Constant\ErrorCode;
 use Constant\JWTKey;
+use Exception\BaseException;
 use Firebase\JWT\JWT;
+use Model\SettingModel;
 use Model\UserModel;
 use Service\ValidCodeService;
 
@@ -79,6 +81,17 @@ class LoginLogic extends BaseLogic
 
         return ["token" => $this->generateJWT($user_id)];
 
+    }
+
+    public function backgroundImg()
+    {
+        $setting = SettingModel::getSettingByName("login_image");
+
+        if(!$setting){
+            BaseException::SystemError();
+        }
+
+        return ["image" => $setting['value']];
     }
 
     /**

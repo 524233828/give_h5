@@ -33,4 +33,9 @@ class LoginController extends BaseController
 
         return $this->response(LoginLogic::getInstance()->checkCode($phone, $code));
     }
+
+    public function backgroundImg()
+    {
+        return $this->response(LoginLogic::getInstance()->backgroundImg());
+    }
 }

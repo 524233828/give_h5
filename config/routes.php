@@ -30,6 +30,7 @@ route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(
 route()->group(['prefix' => '/login', 'middleware' => 'dispatch'], function(){
     route()->post("/send_code", 'LoginController@sendCode');
     route()->post("/check_code", 'LoginController@login');
+    route()->get("/image", 'LoginController@backgroundImg');
 });
 
 route()->group(['prefix' => '/order', 'middleware' => 'dispatch'], function(){
@@ -73,6 +74,13 @@ route()->group(['prefix' => '/admin', 'middleware' => 'admin_dispatch'],function
     route()->post("/recommend","Admin\RecommendController@addAction")->withAddMiddleware("login");
     route()->post("/recommend/update","Admin\RecommendController@updateAction")->withAddMiddleware("login");
     route()->post("/recommend/delete","Admin\RecommendController@deleteAction")->withAddMiddleware("login");
+
+    //系统设置
+    route()->get("/setting","Admin\SettingController@listAction")->withAddMiddleware("login");
+    route()->get("/setting/get","Admin\SettingController@getAction")->withAddMiddleware("login");
+    route()->post("/setting","Admin\SettingController@addAction")->withAddMiddleware("login");
+    route()->post("/setting/update","Admin\SettingController@updateAction")->withAddMiddleware("login");
+    route()->post("/setting/delete","Admin\SettingController@deleteAction")->withAddMiddleware("login");
 
     //订单
     route()->get("/order", "Admin\OrderController@listAction")->withAddMiddleware("login");
