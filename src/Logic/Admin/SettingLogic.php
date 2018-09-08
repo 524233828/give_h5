@@ -95,11 +95,10 @@ class SettingLogic extends AdminBaseLogic
 
         $data = [];
 
-        foreach ($this->list_filter as $v){
-            if(isset($params[$v])){
-                $data[$v] = $params[$v];
-            }
+        if(isset($params["value"])){
+            $data["value"] = $params["value"];
         }
+
 
         $result = SettingModel::update($data, ["id" => $id]);
 
