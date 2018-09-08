@@ -102,7 +102,7 @@ class SettingLogic extends AdminBaseLogic
 
         $result = SettingModel::update($data, ["id" => $id]);
 
-        if($result){
+        if($result!==false){
             return [];
         }
 
