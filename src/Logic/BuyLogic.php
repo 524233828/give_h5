@@ -23,8 +23,11 @@ use Service\Pager;
 class BuyLogic extends BaseLogic
 {
 
-    public function cate($cate_id, $buy_type = 0, $pay_type)
+    public function cate($cate_id, $buy_type = 0, $pay_type, $return_url = null)
     {
+        if(empty($return_url)){
+            $return_url = "http://give_h5.ym8800.com";
+        }
         //判断用户是否已购买
         if(!UserCateModel::isExpired(UserLogic::$user['id'], $cate_id)){
             error(ErrorCode::USER_CATE_EXISTS);
@@ -54,7 +57,7 @@ class BuyLogic extends BaseLogic
             "subject" => $info,
             'currency' => 'CNY',
             'description' => $info,
-            'return_url' => 'http://www.ym8800.com',
+            'return_url' => $return_url,
         ];
 
         if($pay_type == "wechat_h5")
