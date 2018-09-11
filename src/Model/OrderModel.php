@@ -16,7 +16,7 @@ class OrderModel extends BaseModel
 
     public static function getOrderId()
     {
-        $order_id = microtime(true)*1000000;
+        $order_id = microtime(true)*10000;
         return "{$order_id}";
     }
 
