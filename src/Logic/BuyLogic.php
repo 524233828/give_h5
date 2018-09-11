@@ -135,7 +135,7 @@ class BuyLogic extends BaseLogic
         foreach ($order_list as $k => $v)
         {
             $order_list[$k]['pay_time'] = date("Y-m-d H:i:s", $v['pay_time']);
-            $order_ids = $v['order_id'];
+            $order_ids[] = $v['order_id'];
             $order_index_list[$v["order_id"]] = $v;
         }
 
