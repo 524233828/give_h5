@@ -142,12 +142,13 @@ class BuyLogic extends BaseLogic
         //TODO：这里可以优化到Goods服务里面，但目前只有一种商品，暂时这样
         if(!empty($order_ids)){
             $cates = UserCateModel::fetch(["cate_id", "order_id", "end_time"],["order_id" => $order_ids]);
+            foreach ($cates as $cate){
+                $order_index_list[$cate['order_id']]['cate_id'] = $cate['cate_id'];
+                $order_index_list[$cate['order_id']]['end_time'] = date("Y-m-d H:i:s",$cate['end_time']);
+            }
         }
 
-        foreach ($cates as $cate){
-            $order_index_list[$cate['order_id']]['cate_id'] = $cate['cate_id'];
-            $order_index_list[$cate['order_id']]['end_time'] = date("Y-m-d H:i:s",$cate['end_time']);
-        }
+
 
         $order_list = array_values($order_index_list);
 
