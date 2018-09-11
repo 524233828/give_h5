@@ -27,7 +27,7 @@ class NotifyLogic extends BaseLogic
         call_user_func([$this,$order['pay_type']], $request, $order);
     }
 
-    public function alipay_web(ServerRequest $request, $order)
+    public function alipay_wap(ServerRequest $request, $order)
     {
         $log = myLog("NotifyLogic_alipay");
 
