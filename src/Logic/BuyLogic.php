@@ -16,6 +16,7 @@ use Model\OrderModel;
 use Model\UserCateModel;
 use Pay\Pay;
 use Runner\NezhaCashier\Cashier;
+use Runner\NezhaCashier\Utils\Amount;
 use Service\Goods\Goods;
 use Service\Pager;
 
@@ -49,7 +50,7 @@ class BuyLogic extends BaseLogic
 
         $order = [
             "order_id" => $order_id,
-            "amount" => $amount,
+            "amount" => Amount::dollarToCent($amount),
             "subject" => $info,
             'currency' => 'CNY',
             'description' => $info,
