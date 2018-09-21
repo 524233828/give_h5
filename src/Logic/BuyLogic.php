@@ -62,7 +62,7 @@ class BuyLogic extends BaseLogic
 
         if($pay_type == "wechat_h5")
         {
-            $order['user_ip'] = client_ip();
+            $order['user_ip'] = client_ip(0, true);
         }
 
         database()->pdo->beginTransaction();
