@@ -57,7 +57,7 @@ class BuyLogic extends BaseLogic
             "subject" => $info,
             'currency' => 'CNY',
             'description' => $info,
-            'return_url' => $return_url,
+//            'return_url' => $return_url,
         ];
 
         if($pay_type == "wechat_h5")
