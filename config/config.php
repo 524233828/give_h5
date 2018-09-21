@@ -50,5 +50,11 @@ return [
             'mch_secret' => '2yaoyuan1367890POIMNBHYTSGBHJK67', // 微信支付密钥
             "notify_url" => 'http://give_h5.ym8800.com/api/common/notify'
         ],
+        "wechat_official" => [
+            'app_id'     => 'wx38dd89afcc42c109', // 应用ID
+            'mch_id'     => '1514441561', // 微信支付商户号
+            'mch_secret' => '2yaoyuan1367890POIMNBHYTSGBHJK67', // 微信支付密钥
+            "notify_url" => 'http://give_h5.ym8800.com/api/common/notify'
+        ],
     ],
 ];
