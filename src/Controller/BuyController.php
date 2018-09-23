@@ -20,7 +20,7 @@ class BuyController extends BaseController
         validator($request, [
             "cate_id" => "required|integer",
             "buy_type" => "required|in:0,1",
-            "pay_type" => "required|in:wechat_h5,alipay_web,alipay_wap",
+            "pay_type" => "required|in:wechat_h5,alipay_web,alipay_wap,wechat_official",
         ]);
 
         $cate_id = $request->getParam("cate_id");
