@@ -23,7 +23,7 @@ use Service\Pager;
 class BuyLogic extends BaseLogic
 {
 
-    public function cate($cate_id, $buy_type = 0, $pay_type, $return_url = null)
+    public function cate($cate_id, $buy_type = 0, $pay_type, $return_url = null, $code = null)
     {
         if(empty($return_url)){
             $return_url = "http://give_h5.ym8800.com";
@@ -63,6 +63,10 @@ class BuyLogic extends BaseLogic
         if($pay_type == "wechat_h5")
         {
             $order['user_ip'] = client_ip(0, true);
+        }
+
+        if(!empty($code)){
+            $order['extras.code'] = $code;
         }
 
         database()->pdo->beginTransaction();
