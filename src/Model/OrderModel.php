@@ -55,4 +55,53 @@ SQL;
         return database()->query($sql)->fetchAll();
 
     }
+
+    /**
+     * 下单量
+     * @param $start_time
+     * @param $end_time
+     * @param array|null $channel
+     * @return array
+     */
+    public static function countChannelOrder($start_time, $end_time, array $channel = null)
+    {
+        $table = self::$table;
+
+        $where = "`create_time`>={$start_time} and `create_time`<{$end_time}";
+
+        if(!empty($channel)){
+            $channel = implode("','", $channel);
+            $where .= "and channel IN ('$channel')";
+        }
+
+        $sql = <<<SQL
+SELECT count(*) as order_count, channel FROM `{$table}` WHERE {$where} GROUP BY `channel`
+SQL;
+
+        return database()->query($sql)->fetchAll();
+    }
+
+    /**
+     * @param $start_time
+     * @param $end_time
+     * @param array|null $channel
+     * @return array
+     */
+    public static function countChannelPay($start_time, $end_time, array $channel = null)
+    {
+        $table = self::$table;
+
+        $where = "`create_time`>={$start_time} and `create_time`<{$end_time} and status=1";
+
+        if(!empty($channel)){
+            $channel = implode("','", $channel);
+            $where .= "and channel IN ('$channel')";
+        }
+
+        $sql = <<<SQL
+SELECT count(*) as pay_count, sum(`total_fee`) as pay_sum, channel FROM `{$table}` WHERE {$where} GROUP BY `channel`
+SQL;
+
+        return database()->query($sql)->fetchAll();
+    }
 }

@@ -28,12 +28,13 @@ class BuyController extends BaseController
         $pay_type = $request->getParam("pay_type");
         $return_url = $request->getParam("return_url");
         $code = $request->getParam("code", null);
+        $channel = $request->getParam("channel", null);
 
         if($pay_type == "alipay"){
-            return BuyLogic::getInstance()->cate($cate_id, $buy_type, $pay_type, $return_url, $code);
+            return BuyLogic::getInstance()->cate($cate_id, $buy_type, $pay_type, $return_url, $code, $channel);
         }
 
-        return $this->response(BuyLogic::getInstance()->cate($cate_id, $buy_type, $pay_type, $return_url, $code));
+        return $this->response(BuyLogic::getInstance()->cate($cate_id, $buy_type, $pay_type, $return_url, $code, $channel));
     }
 
 

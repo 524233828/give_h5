@@ -23,7 +23,7 @@ use Service\Pager;
 class BuyLogic extends BaseLogic
 {
 
-    public function cate($cate_id, $buy_type = 0, $pay_type, $return_url = null, $code = null)
+    public function cate($cate_id, $buy_type = 0, $pay_type, $return_url = null, $code = null, $channel = null)
     {
         if(empty($return_url)){
             $return_url = "http://give_h5.ym8800.com";
@@ -77,7 +77,8 @@ class BuyLogic extends BaseLogic
             "create_time" => time(),
             "product_id" => Goods::USER_CATE,
             "user_id" => UserLogic::$user['id'],
-            "pay_type" => $pay_type
+            "pay_type" => $pay_type,
+            "channel" => $channel
         ];
 
         $user_cate_data = [

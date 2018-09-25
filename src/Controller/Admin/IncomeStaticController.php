@@ -33,4 +33,13 @@ class IncomeStaticController extends BaseController
         return $this->response(IncomeStaticLogic::getInstance()->incomeStatic($start_date, $end_date, $format));
     }
 
+    public function channelReport(ServerRequest $request){
+
+        $start_date = $request->getParam("start_date", null);
+        $end_date = $request->getParam("end_date", null);
+        $channel = $request->getParam("channel", null);
+
+        return $this->response(IncomeStaticLogic::getInstance()->channelReport($start_date, $end_date, $channel));
+    }
+
 }

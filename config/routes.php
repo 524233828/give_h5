@@ -90,6 +90,7 @@ route()->group(['prefix' => '/admin', 'middleware' => 'admin_dispatch'],function
 
     //收入统计
     route()->get("/income_static","Admin\IncomeStaticController@incomeStatic")->withAddMiddleware("login");
+    route()->get("/channel_report","Admin\IncomeStaticController@channelReport")->withAddMiddleware("login");
 
 });
 
