@@ -53,7 +53,7 @@ class IncomeStaticLogic extends BaseLogic
         return $result;
     }
 
-    public function channelReport($stat_date = null, $end_date = null, $channel = null)
+    public function channelReport($start_date = null, $end_date = null, $channel = null)
     {
         //开始日期为空，开始日期设为前一天
         if(empty($start_date))
