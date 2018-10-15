@@ -10,8 +10,8 @@ return [
     /**
      * 账号基本信息，请从微信公众平台/开放平台获取
      */
-    'app_id'  => 'wx45d4e558ae0284a4',         // AppID
-    'secret'  => '789d683ce4306dca61b3b768421f9a5b',     // AppSecret
+    'app_id'  => 'wx38dd89afcc42c109',         // AppID
+    'secret'  => 'f354f76c3c06fa8ba45e47ded09dd677',     // AppSecret
     //'token'   => 'your-token',          // Token
 //    'aes_key' => '',                    // EncodingAESKey，安全模式下请一定要填写！！！
     /**
@@ -41,9 +41,9 @@ return [
      * 微信支付
      */
     'payment' => [
-        'merchant_id'        => '1493544892',
-        'key'                => 'yaoyuan123*',
-        'notify_url'         => 'http://give_h5.ym8800.com/common/order_notify',      // XXX: 绝对路径！！！！
+        'merchant_id'        => '1514441561',
+        'key'                => '2yaoyuan1367890POIMNBHYTSGBHJK67*',
+        'notify_url'         => 'http://give_h5.ym8800.com/api/common/notify',      // XXX: 绝对路径！！！！
         // 'device_info'     => '013467007045764',
         // 'sub_app_id'      => '',
         // 'sub_merchant_id' => '',
