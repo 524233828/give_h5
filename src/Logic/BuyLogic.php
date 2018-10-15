@@ -65,7 +65,7 @@ class BuyLogic extends BaseLogic
             $order['user_ip'] = client_ip(0, true);
         }
 
-        if(!empty($code)){
+        if(!empty($code) && $pay_type == "wechat_official"){
             $order['extras']['code'] = $code;
         }
 
@@ -117,7 +117,12 @@ class BuyLogic extends BaseLogic
         $config = config()->get("payment");
         $pay = new Cashier($pay_type, $config[$pay_type]);
 
-        return $pay->charge($order)->get("charge_url");
+        if($pay_type == "wechat_official"){
+            return $pay->charge($order)->get("parameters");
+        }else{
+            return $pay->charge($order)->get("charge_url");
+        }
+
     }
 
     public function fetchOrderList($page = 1, $size = 20)
