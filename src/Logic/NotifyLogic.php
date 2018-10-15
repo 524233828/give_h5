@@ -59,6 +59,12 @@ class NotifyLogic extends BaseLogic
     {
         //TODO: 验签
 
+        $log = myLog("NotifyLogic_wechat_h5");
+
+        $log->addDebug("query_params:", $request->getQueryParams());
+        $log->addDebug("body:".$request->getBody()->getContents());
+        $log->addDebug("order:", $order);
+
         $payment = wechat()->payment;
         $response = $payment->handleNotify("\Logic\NotifyLogic::wechatOrderNotify");
         $response->send();
@@ -68,6 +74,9 @@ class NotifyLogic extends BaseLogic
 
     public static function wechatOrderNotify($notify,$successful)
     {
+        $log = myLog("NotifyLogic_wechatOrderNotify");
+        $log->addDebug("notify", $notify);
+        $log->addDebug("successful:".$successful);
         if($successful){
             $order = OrderModel::getOrderByOrderId($notify['out_trade_no']);
             $order_data = [
