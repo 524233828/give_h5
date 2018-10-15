@@ -119,6 +119,7 @@ class BuyLogic extends BaseLogic
 
         if($pay_type == "wechat_official"){
             $params = $pay->charge($order)->get("parameters");
+            $params['timeStamp'] = (string)$params['timeStamp'];
             return ["jsApiParameters" => json_encode($params, JSON_UNESCAPED_UNICODE)];
         }else{
             return $pay->charge($order)->get("charge_url");
