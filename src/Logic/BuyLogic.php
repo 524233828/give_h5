@@ -118,7 +118,8 @@ class BuyLogic extends BaseLogic
         $pay = new Cashier($pay_type, $config[$pay_type]);
 
         if($pay_type == "wechat_official"){
-            return $pay->charge($order)->get("parameters");
+            $params = $pay->charge($order)->get("parameters");
+            return json_encode($params, JSON_UNESCAPED_UNICODE);
         }else{
             return $pay->charge($order)->get("charge_url");
         }
