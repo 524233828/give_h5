@@ -65,8 +65,8 @@ class BuyLogic extends BaseLogic
             $order['user_ip'] = client_ip(0, true);
         }
 
-        if(!empty($code) && $pay_type == "wechat_official"){
-            $order['extras.code'] = $code;
+        if(!empty($code)){
+            $order['extras']['code'] = $code;
         }
 
         database()->pdo->beginTransaction();
