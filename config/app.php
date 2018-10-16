@@ -93,5 +93,7 @@ return [
         'login' => new \Middleware\LoginCheck(),
         //后台分发
         'admin_dispatch' => new Middleware\AdminDispatch(),
+        //加入xml处理
+        'xml' => new \Middleware\XmlParseMiddleware(),
     ],
 ];
