@@ -26,6 +26,6 @@ class OrderService
         //更新商品状态
         $gateway = Goods::$gateway[$order['product_id']];
 
-        call_user_func(["\Service\Goods\Goods", $gateway], $order['order_id']);
+        return call_user_func(["\Service\Goods\Goods", $gateway], $order['order_id']);
     }
 }

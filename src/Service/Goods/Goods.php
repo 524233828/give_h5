@@ -38,6 +38,9 @@ class Goods
 
         $result = UserCateModel::update(['status' => 1, 'end_time' => $end_time],["order_id" => $order_id]);
         $log->addDebug("result:".$result);
+
+        return $result !== false;
+
     }
 
 }

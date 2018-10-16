@@ -9,11 +9,11 @@
 namespace Logic;
 
 
+use EasyWeChat\Support\XML;
 use FastD\Http\ServerRequest;
+use FastD\Http\Response;
 use Model\OrderModel;
-use Runner\NezhaCashier\Cashier;
 use Runner\NezhaCashier\Utils\Amount;
-use Service\Goods\Goods;
 use Service\OrderService;
 
 class NotifyLogic extends BaseLogic
@@ -55,6 +55,8 @@ class NotifyLogic extends BaseLogic
         ];
         OrderService::updateOrder($order, $order_data);
 
+        echo "success";exit;
+
     }
 
     public function wechat_h5(ServerRequest $request, $order)
@@ -75,9 +77,62 @@ class NotifyLogic extends BaseLogic
             "pay_time" => strtotime($request->getParam('time_end')),
             "status" => 1
         ];
-        OrderService::updateOrder($order, $order_data);
+        $result = OrderService::updateOrder($order, $order_data);
 
-        //更新订单
+        if (is_bool($result) && $result) {
+            $response = [
+                'return_code' => 'SUCCESS',
+                'return_msg' => 'OK',
+            ];
+        } else {
+            $response = [
+                'return_code' => 'FAIL',
+                'return_msg' => $result,
+            ];
+        }
+
+        $response = new Response(XML::build($response));
+
+        $response->send();
+        exit;
+    }
+
+    public function wechat_official(ServerRequest $request, $order)
+    {
+        //TODO: 验签
+
+        $log = myLog("NotifyLogic_wechat_official");
+
+        $log->addDebug("query_params:", $request->getQueryParams());
+        $log->addDebug("body:".$request->getBody()->getContents());
+        $log->addDebug("order:", $order);
+
+        $order_data = [
+            "settlement_total_fee" => Amount::centToDollar($request->getParam('cash_fee')),
+            "fee_type" => $request->getParam('fee_type'),
+            "transaction_id" => $request->getParam('transaction_id'),
+            "bank_type" => $request->getParam('bank_type'),
+            "pay_time" => strtotime($request->getParam('time_end')),
+            "status" => 1
+        ];
+        $result = OrderService::updateOrder($order, $order_data);
+
+        if (is_bool($result) && $result) {
+            $response = [
+                'return_code' => 'SUCCESS',
+                'return_msg' => 'OK',
+            ];
+        } else {
+            $response = [
+                'return_code' => 'FAIL',
+                'return_msg' => $result,
+            ];
+        }
+
+        $response = new Response(XML::build($response));
+
+        $response->send();
+        exit;
 
     }
 
