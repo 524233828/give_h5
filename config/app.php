@@ -51,7 +51,7 @@ return [
         \FastD\ServiceProvider\DatabaseServiceProvider::class,
         \FastD\ServiceProvider\CacheServiceProvider::class,
         \ServiceProvider\ValidationServiceProvider::class,
-        \ServiceProvider\WechatServiceProvider::class
+//        \ServiceProvider\WechatServiceProvider::class
     ],
 
     /**

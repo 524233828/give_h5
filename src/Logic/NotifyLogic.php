@@ -11,6 +11,8 @@ namespace Logic;
 
 use FastD\Http\ServerRequest;
 use Model\OrderModel;
+use Runner\NezhaCashier\Cashier;
+use Runner\NezhaCashier\Utils\Amount;
 use Service\Goods\Goods;
 use Service\OrderService;
 
@@ -20,8 +22,6 @@ class NotifyLogic extends BaseLogic
     {
         $log = myLog("NotifyLogic_payNotify");
         $out_trade_no = $request->getParam("out_trade_no");
-        $log->addDebug("body:".$request->getBody()->getContents());
-        $log->addDebug("content_type:".$request->getHeaderLine("content_type"));
 
         $log->addDebug("out_trade_no:". $out_trade_no);
         $order = OrderModel::getOrderByOrderId($out_trade_no);
@@ -67,9 +67,16 @@ class NotifyLogic extends BaseLogic
         $log->addDebug("body:".$request->getBody()->getContents());
         $log->addDebug("order:", $order);
 
-        $payment = wechat()->payment;
-        $response = $payment->handleNotify("\Logic\NotifyLogic::wechatOrderNotify");
-        $response->send();
+        $order_data = [
+            "settlement_total_fee" => Amount::centToDollar($request->getParam('cash_fee')),
+            "fee_type" => $request->getParam('fee_type'),
+            "transaction_id" => $request->getParam('transaction_id'),
+            "bank_type" => $request->getParam('bank_type'),
+            "pay_time" => strtotime($request->getParam('time_end')),
+            "status" => 1
+        ];
+        OrderService::updateOrder($order, $order_data);
+
         //更新订单
 
     }
