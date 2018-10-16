@@ -21,6 +21,7 @@ class NotifyLogic extends BaseLogic
         $log = myLog("NotifyLogic_payNotify");
         $out_trade_no = $request->getParam("out_trade_no");
         $log->addDebug("body:".$request->getBody()->getContents());
+        $log->addDebug("content_type:".$request->getHeaderLine("content_type"));
 
         $log->addDebug("out_trade_no:". $out_trade_no);
         $order = OrderModel::getOrderByOrderId($out_trade_no);
