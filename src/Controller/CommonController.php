@@ -27,10 +27,10 @@ class CommonController extends BaseController
         $log = myLog("Common_orderNotify");
 
         $log->addDebug("支付回调开始");
-        $log->addDebug("out_trade_no:".$request->getParam("out_trade_no"));
-        validator($request,[
-           "out_trade_no" => "required"
-        ]);
+//        $log->addDebug("out_trade_no:".$request->getParam("out_trade_no"));
+//        validator($request,[
+//           "out_trade_no" => "required"
+//        ]);
 
         NotifyLogic::getInstance()->payNotify($request);
     }

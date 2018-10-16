@@ -39,6 +39,7 @@ route()->group(['prefix' => '/order', 'middleware' => 'dispatch'], function(){
 
 route()->group(['prefix' => '/common', 'middleware' => 'dispatch'], function(){
     route()->post("/notify", 'CommonController@orderNotify');
+    route()->post("/notify", 'CommonController@orderNotify');
 });
 
 //用户信息页
