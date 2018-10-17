@@ -42,7 +42,7 @@ class RecommendLogic extends BaseLogic
         //分页
         $where["LIMIT"] = [$pager->getFirstIndex(), $size];
 
-        $where["ORDER"] = ["sort" => "DESC"];
+        $where["ORDER"] = ["sort" => "DESC", "create_time" => "DESC"];
 
         $list = RecommendModel::fetch([
             RecommendModel::$table.".id",
