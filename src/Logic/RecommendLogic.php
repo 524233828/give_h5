@@ -32,26 +32,38 @@ class RecommendLogic extends BaseLogic
 
     public function fetchRecommendByCate($cate_id, $page = 1, $size = 20)
     {
-        $pager = new Pager($page, $size);
+//        $pager = new Pager($page, $size);
 
         $where = ['cate_id' => $cate_id, "status" => 1, "end_time[>]" => time()];
 
         //计算符合筛选参数的行数
-        $count = RecommendModel::count($where);
+//        $count = RecommendModel::count($where);
 
         //分页
-        $where["LIMIT"] = [$pager->getFirstIndex(), $size];
+//        $where["LIMIT"] = [$pager->getFirstIndex(), $size];
 
         $where["ORDER"] = ["sort" => "DESC", "create_time" => "DESC"];
 
         $list = RecommendModel::fetch([
             RecommendModel::$table.".id",
             RecommendModel::$table.".title",
+            RecommendModel::$table.".create_time",
             RecommendModel::$table.".update_time",
             RecommendModel::$table.".sort",
         ],$where);
 
-        return ["list"=>$list, "meta" => $pager->getPager($count)];
+        $date_group_list = [];
+        foreach($list as $value)
+        {
+            $key = date("Y-m-d", $value['create_time']);
+            $value['create_time'] = date("Y-m-d H:i:s", $value['create_time']);
+            $date_group_list[$key][] = $value;
+        }
+
+        return [
+            "list"=>$date_group_list,
+//            "meta" => $pager->getPager($count)
+        ];
     }
 
     public function recommendInfo($recommend_id)
