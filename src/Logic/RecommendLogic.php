@@ -57,11 +57,14 @@ class RecommendLogic extends BaseLogic
         {
             $key = date("Y-m-d", $value['create_time']);
             $value['create_time'] = date("Y-m-d H:i:s", $value['create_time']);
-            $date_group_list[$key][] = $value;
+            $date_group_list[$key]["list"][] = $value;
+            $date_group_list[$key]["date"] = $key;
         }
 
+        $list = array_values($date_group_list);
+
         return [
-            "list"=>$date_group_list,
+            "list"=>$list,
 //            "meta" => $pager->getPager($count)
         ];
     }
