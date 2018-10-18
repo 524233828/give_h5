@@ -19,7 +19,7 @@ class RecommendController extends AdminBaseController
 
         $this->add_valid = [
             "title" => "null",
-            "image_url" => "url",
+//            "image_url" => "url",
             "content" => "null",
             "sort" => "integer",
             "status" => "integer",
