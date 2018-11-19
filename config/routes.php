@@ -12,6 +12,9 @@ route()->group(['prefix' => '/pay', 'middleware' => 'dispatch'], function(){
     route()->get("/price", 'BuyController@catePrice');
     route()->post("/cate", 'BuyController@userCate')->withAddMiddleware("login");
     route()->get("/cate", 'BuyController@userCate')->withAddMiddleware("login");
+    route()->post("/analyst", 'BuyController@userAnalyst')->withAddMiddleware("login");
+    route()->get("/analyst", 'BuyController@userAnalyst')->withAddMiddleware("login");
+    route()->get("/analyst_price", 'BuyController@analystPrice')->withAddMiddleware("login");
 });
 
 //分类列表页
@@ -24,6 +27,18 @@ route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(
     route()->get("/image", 'RecommendController@cateImage');
     route()->get("/list", 'RecommendController@fetchRecommendByCate');
     route()->get("/info", 'RecommendController@recommendInfo');
+});
+
+//分类列表页
+route()->group(['prefix' => '/analyst', 'middleware' => 'dispatch'], function(){
+    route()->get("/list", 'AnalystController@analystList');
+});
+
+//推荐列表页
+route()->group(['prefix' => '/analyst_recommend', 'middleware' => 'dispatch'], function(){
+//    route()->get("/image", 'AnalystRecommendController@cateImage');
+    route()->get("/list", 'AnalystRecommendController@fetchRecommendByAnalyst');
+    route()->get("/info", 'AnalystRecommendController@recommendInfo');
 });
 
 //登录页
@@ -91,6 +106,20 @@ route()->group(['prefix' => '/admin', 'middleware' => 'admin_dispatch'],function
     //收入统计
     route()->get("/income_static","Admin\IncomeStaticController@incomeStatic")->withAddMiddleware("login");
     route()->get("/channel_report","Admin\IncomeStaticController@channelReport")->withAddMiddleware("login");
+
+    //分析师
+    route()->get("/analyst","Admin\AnalystController@listAction")->withAddMiddleware("login");
+    route()->get("/analyst/get","Admin\AnalystController@getAction")->withAddMiddleware("login");
+    route()->post("/analyst","Admin\AnalystController@addAction")->withAddMiddleware("login");
+    route()->post("/analyst/update","Admin\AnalystController@updateAction")->withAddMiddleware("login");
+    route()->post("/analyst/delete","Admin\AnalystController@deleteAction")->withAddMiddleware("login");
+
+    //分析师推荐
+    route()->get("/analyst_rec","Admin\AnalystRecommendController@listAction")->withAddMiddleware("login");
+    route()->get("/analyst_rec/get","Admin\AnalystRecommendController@getAction")->withAddMiddleware("login");
+    route()->post("/analyst_rec","Admin\AnalystRecommendController@addAction")->withAddMiddleware("login");
+    route()->post("/analyst_rec/update","Admin\AnalystRecommendController@updateAction")->withAddMiddleware("login");
+    route()->post("/analyst_rec/delete","Admin\AnalystRecommendController@deleteAction")->withAddMiddleware("login");
 
 });
 
