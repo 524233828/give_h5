@@ -25,6 +25,7 @@ class AnalystLogic extends AdminBaseLogic
         "season_amount",
         "month_amount",
         "week_amount",
+        "sort",
     ];
 
     public function listAction($params)
