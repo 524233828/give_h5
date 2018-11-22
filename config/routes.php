@@ -29,12 +29,12 @@ route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(
     route()->get("/info", 'RecommendController@recommendInfo');
 });
 
-//分类列表页
+//分析师列表页
 route()->group(['prefix' => '/analyst', 'middleware' => 'dispatch'], function(){
     route()->get("/list", 'AnalystController@analystList');
 });
 
-//推荐列表页
+//分析师推荐列表页
 route()->group(['prefix' => '/analyst_recommend', 'middleware' => 'dispatch'], function(){
 //    route()->get("/image", 'AnalystRecommendController@cateImage');
     route()->get("/list", 'AnalystRecommendController@fetchRecommendByAnalyst');
