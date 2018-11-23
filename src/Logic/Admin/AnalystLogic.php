@@ -60,7 +60,10 @@ class AnalystLogic extends AdminBaseLogic
             "week_amount",
             "month_amount",
             "season_amount",
-            "update_time"
+            "update_time",
+            "sort",
+            "tag",
+            "information"
         ],$where);
 
         return ["list"=>$list, "meta" => $pager->getPager($count)];
