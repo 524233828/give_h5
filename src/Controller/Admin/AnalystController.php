@@ -20,6 +20,13 @@ class AnalystController extends AdminBaseController
         $this->add_valid = [
             "nickname" => "required",
             "avatar" => "url",
+            "tag" => "null",
+            "information" => "null",
+            "status" => "integer",
+            "sort" => "integer",
+            "season_amount" => "float",
+            "month_amount" => "float",
+            "week_amount" => "float",
         ];
     }
 
