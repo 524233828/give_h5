@@ -145,7 +145,7 @@ class AnalystLogic extends AdminBaseLogic
 
         $result = AnalystModel::update($data, ["id" => $id]);
 
-        if($result){
+        if($result !== false){
             return [];
         }
 
