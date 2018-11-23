@@ -57,6 +57,9 @@ class AnalystLogic extends AdminBaseLogic
             "avatar",
             "nickname",
             "status",
+            "week_amount",
+            "month_amount",
+            "season_amount",
             "update_time"
         ],$where);
 
