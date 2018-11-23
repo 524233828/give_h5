@@ -25,6 +25,7 @@ class AnalystRecommendController extends AdminBaseController
             "status" => "integer",
             "analyst_id" => "integer",
             "end_time" => "integer",
+            "type" => "integer|in:0,1",
         ];
     }
 }

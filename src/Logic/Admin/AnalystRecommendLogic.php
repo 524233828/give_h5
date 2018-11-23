@@ -58,7 +58,6 @@ class AnalystRecommendLogic extends AdminBaseLogic
         $list = AnalystRecommendModel::fetchRecommendWithAnalyst([
             AnalystRecommendModel::$table.".id",
             AnalystRecommendModel::$table.".title",
-            AnalystRecommendModel::$table.".image_url",
             AnalystRecommendModel::$table.".content",
             AnalystRecommendModel::$table.".create_time",
             AnalystRecommendModel::$table.".update_time",
