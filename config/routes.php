@@ -32,7 +32,7 @@ route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(
 //分析师列表页
 route()->group(['prefix' => '/analyst', 'middleware' => 'dispatch'], function(){
     route()->get("/list", 'AnalystController@analystList');
-    route()->get("/banner", 'AnalystController@analystList');
+    route()->get("/banner", 'AnalystController@banner');
 });
 
 //分析师推荐列表页
