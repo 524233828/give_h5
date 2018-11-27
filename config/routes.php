@@ -36,7 +36,7 @@ route()->group(['prefix' => '/analyst', 'middleware' => 'dispatch'], function(){
 
 //分析师推荐列表页
 route()->group(['prefix' => '/analyst_recommend', 'middleware' => 'dispatch'], function(){
-//    route()->get("/image", 'AnalystRecommendController@cateImage');
+    route()->get("/image", 'AnalystRecommendController@analystImage');
     route()->get("/list", 'AnalystRecommendController@fetchRecommendByAnalyst');
     route()->get("/info", 'AnalystRecommendController@recommendInfo');
 });

@@ -10,6 +10,7 @@ namespace Logic;
 
 
 use Constant\ErrorCode;
+use Model\AnalystModel;
 use Model\AnalystRecommendModel;
 use Model\CateModel;
 use Model\RecommendModel;
@@ -20,17 +21,17 @@ use Service\Pager;
 class AnalystRecommendLogic extends BaseLogic
 {
 
-//    public function cateImage($cate_id)
-//    {
-//        $cate = CateModel::get($cate_id, ["image_url"]);
-//
-//        if(empty($cate))
-//        {
-//            error(ErrorCode::CATE_NOT_FOUND);
-//        }
-//
-//        return $cate;
-//    }
+    public function analystImage($analyst_id)
+    {
+        $analyst = AnalystModel::get($analyst_id, ["image_url"]);
+
+        if(empty($analyst))
+        {
+            error(ErrorCode::CATE_NOT_FOUND);
+        }
+
+        return $analyst;
+    }
 
     public function fetchRecommendByAnalyst($analyst_id, $page = 1, $size = 20)
     {

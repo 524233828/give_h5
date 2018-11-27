@@ -15,12 +15,12 @@ use Logic\RecommendLogic;
 
 class AnalystRecommendController extends BaseController
 {
-//    public function cateImage(ServerRequest $request)
-//    {
-//        validator($request, ["cate_id"=>"required|integer"]);
-//        $cate_id = $request->getParam("cate_id");
-//        return $this->response(RecommendLogic::getInstance()->cateImage($cate_id));
-//    }
+    public function analystImage(ServerRequest $request)
+    {
+        validator($request, ["analyst_id"=>"required|integer"]);
+        $analyst_id = $request->getParam("analyst_id");
+        return $this->response(AnalystRecommendLogic::getInstance()->analystImage($analyst_id));
+    }
 
     public function fetchRecommendByAnalyst(ServerRequest $request)
     {

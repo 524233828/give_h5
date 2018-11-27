@@ -26,6 +26,7 @@ class AnalystLogic extends AdminBaseLogic
         "month_amount",
         "week_amount",
         "sort",
+        "image_url",
     ];
 
     public function listAction($params)
@@ -63,7 +64,8 @@ class AnalystLogic extends AdminBaseLogic
             "update_time",
             "sort",
             "tag",
-            "information"
+            "information",
+            "image_url",
         ],$where);
 
         return ["list"=>$list, "meta" => $pager->getPager($count)];

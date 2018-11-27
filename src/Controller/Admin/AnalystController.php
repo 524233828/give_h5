@@ -27,6 +27,7 @@ class AnalystController extends AdminBaseController
             "season_amount" => "float",
             "month_amount" => "float",
             "week_amount" => "float",
+            "image_url" => "url",
         ];
     }
 
