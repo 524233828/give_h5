@@ -23,4 +23,9 @@ class AnalystController extends BaseController
 
         return $this->response(AnalystLogic::getInstance()->analystList($page, $size));
     }
+
+    public function banner(ServerRequest $request)
+    {
+        return $this->response(AnalystLogic::getInstance()->banner());
+    }
 }

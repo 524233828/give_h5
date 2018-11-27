@@ -9,6 +9,7 @@
 namespace Logic;
 
 
+use Model\AnalystBannerModel;
 use Model\AnalystModel;
 use Service\Pager;
 
@@ -32,5 +33,20 @@ class AnalystLogic extends BaseLogic
         );
 
         return ["list" => $list, "meta" => $page->getPager($count)];
+    }
+
+    public function banner()
+    {
+        $list =  AnalystBannerModel::fetch(
+            [
+                "image_url",
+                "url",
+            ],
+            [
+                "status" => 1,
+                "ORDER" => ["sort" => "DESC"]
+            ]
+        );
+        return ["list" => $list];
     }
 }

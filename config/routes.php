@@ -32,6 +32,7 @@ route()->group(['prefix' => '/recommend', 'middleware' => 'dispatch'], function(
 //分析师列表页
 route()->group(['prefix' => '/analyst', 'middleware' => 'dispatch'], function(){
     route()->get("/list", 'AnalystController@analystList');
+    route()->get("/banner", 'AnalystController@analystList');
 });
 
 //分析师推荐列表页
@@ -75,6 +76,13 @@ route()->group(['prefix' => '/admin', 'middleware' => 'admin_dispatch'],function
     route()->post("/banner","Admin\BannerController@addAction")->withAddMiddleware("login");
     route()->post("/banner/update","Admin\BannerController@updateAction")->withAddMiddleware("login");
     route()->post("/banner/delete","Admin\BannerController@deleteAction")->withAddMiddleware("login");
+
+    //首页banner
+    route()->get("/new_banner","Admin\BannerController@listAction")->withAddMiddleware("login");
+    route()->get("/new_banner/get","Admin\BannerController@getAction")->withAddMiddleware("login");
+    route()->post("/new_banner","Admin\BannerController@addAction")->withAddMiddleware("login");
+    route()->post("/new_banner/update","Admin\BannerController@updateAction")->withAddMiddleware("login");
+    route()->post("/new_banner/delete","Admin\BannerController@deleteAction")->withAddMiddleware("login");
 
     //分类
     route()->get("/cate","Admin\CateController@listAction")->withAddMiddleware("login");
