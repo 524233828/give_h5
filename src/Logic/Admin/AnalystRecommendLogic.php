@@ -59,6 +59,7 @@ class AnalystRecommendLogic extends AdminBaseLogic
             AnalystRecommendModel::$table.".id",
             AnalystRecommendModel::$table.".title",
             AnalystRecommendModel::$table.".content",
+            AnalystRecommendModel::$table.".image_url",
             AnalystRecommendModel::$table.".create_time",
             AnalystRecommendModel::$table.".update_time",
             AnalystRecommendModel::$table.".status",
