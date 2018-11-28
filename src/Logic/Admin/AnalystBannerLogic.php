@@ -11,7 +11,6 @@ namespace Logic\Admin;
 
 use Exception\BaseException;
 use Model\AnalystBannerModel;
-use Model\BannerModel;
 use Model\PageModel;
 use Service\Pager;
 
