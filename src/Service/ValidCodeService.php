@@ -26,7 +26,7 @@ class ValidCodeService
         $this->uri = new Uri(self::DOMAIN);
     }
 
-    public function sendCode($phone)
+    public function sendCode($phone, $sign_name = null)
     {
         $uri = clone $this->uri;
 
@@ -35,6 +35,7 @@ class ValidCodeService
         $data = [
             'form_params' => [
                 'phone' => $phone,
+                'sign_name' => $sign_name
             ]
         ];
 

@@ -29,7 +29,7 @@ class LoginLogic extends BaseLogic
     {
         $valid_code = new ValidCodeService();
 
-        $result = $valid_code->sendCode($phone);
+        $result = $valid_code->sendCode($phone, "夜猫足球");
 
         if($result['code'] == 1){
             return $result['data'];
